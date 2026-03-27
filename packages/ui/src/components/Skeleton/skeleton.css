@@ -1,0 +1,13 @@
+.nacalui-skeleton {
+  animation: nacalui-skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes nacalui-skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
