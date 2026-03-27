@@ -4,7 +4,11 @@ import UnoCSS from "unocss/vite"
 
 const config: StorybookConfig = {
   stories: ["../stories/**/*.mdx", "../stories/**/*.stories.@(ts|tsx)"],
-  addons: ["@storybook/addon-docs", "@storybook/addon-a11y", "@storybook/addon-mcp"],
+  addons: [
+    "@storybook/addon-docs",
+    "@storybook/addon-a11y",
+    "@storybook/addon-mcp"
+  ],
   framework: {
     name: "@storybook/react-vite",
     options: {}
