@@ -1,3 +1,5 @@
+export type { AccordionItemProps, AccordionProps } from "./components/Accordion"
+export { Accordion, AccordionItem } from "./components/Accordion"
 export type { AlertIntent, AlertProps } from "./components/Alert"
 export { Alert } from "./components/Alert"
 export type { AvatarProps, AvatarSize } from "./components/Avatar"
@@ -9,6 +11,11 @@ export type {
   BadgeVariant
 } from "./components/Badge"
 export { Badge } from "./components/Badge"
+export type {
+  BreadcrumbItemProps,
+  BreadcrumbsProps
+} from "./components/Breadcrumbs"
+export { BreadcrumbItem, Breadcrumbs } from "./components/Breadcrumbs"
 export type {
   ButtonIntent,
   ButtonProps,
@@ -43,6 +50,8 @@ export type { InputProps, InputSize } from "./components/Input"
 export { Input } from "./components/Input"
 export type { LinkProps, LinkVariant } from "./components/Link"
 export { Link } from "./components/Link"
+export type { PaginationProps } from "./components/Pagination"
+export { Pagination } from "./components/Pagination"
 export type { ProgressProps, ProgressSize } from "./components/Progress"
 export { Progress } from "./components/Progress"
 export type { RadioGroupProps, RadioProps } from "./components/Radio"

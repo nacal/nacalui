@@ -11,6 +11,7 @@ import "../../../packages/ui/src/components/Tooltip/tooltip.css"
 import "../../../packages/ui/src/components/Skeleton/skeleton.css"
 import "../../../packages/ui/src/components/DropdownMenu/dropdown-menu.css"
 import "../../../packages/ui/src/components/Progress/progress.css"
+import "../../../packages/ui/src/components/Accordion/accordion.css"
 import type { Preview } from "@storybook/react"
 
 const preview: Preview = {
