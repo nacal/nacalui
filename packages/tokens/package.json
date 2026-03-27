@@ -1,0 +1,26 @@
+{
+  "name": "@nacalui/tokens",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js"
+    },
+    "./uno-preset": {
+      "types": "./dist/uno-preset/index.d.ts",
+      "import": "./dist/uno-preset/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "tsc -p tsconfig.build.json --watch"
+  },
+  "devDependencies": {
+    "typescript": "~5.8.0",
+    "unocss": "^66.0.0"
+  }
+}

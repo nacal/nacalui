@@ -1,0 +1,13 @@
+[data-nacalui-btn] {
+  background-color: var(--btn-bg);
+  color: var(--btn-color);
+  border-color: var(--btn-border, transparent);
+}
+
+[data-nacalui-btn]:hover:not(:disabled) {
+  background-color: var(--btn-bg-hover);
+}
+
+[data-nacalui-btn]:active:not(:disabled) {
+  background-color: var(--btn-bg-active);
+}

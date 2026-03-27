@@ -1,0 +1,17 @@
+{
+  "name": "nacalui",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev:docs": "pnpm --filter @nacalui/docs storybook",
+    "build:tokens": "pnpm --filter @nacalui/tokens build",
+    "build:ui": "pnpm --filter @nacalui/ui build",
+    "build:docs": "pnpm --filter @nacalui/docs build-storybook",
+    "build": "pnpm build:tokens && pnpm build:ui",
+    "typecheck": "tsc -b"
+  },
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=10"
+  }
+}

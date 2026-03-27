@@ -1,0 +1,107 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Design Language/Iconography" />
+
+# Iconography
+
+nacalui では UnoCSS の `preset-icons` を通じて [Iconify](https://iconify.design/) のアイコンを使います。
+CSS クラスだけでアイコンを表示でき、バンドルサイズへの影響も最小限です。
+
+---
+
+## アイコンセット
+
+**[Lucide](https://lucide.dev/)** をプライマリアイコンセットとして採用します。
+
+<table>
+  <thead>
+    <tr><th>選定理由</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>シンプルで落ち着いたストロークスタイル — nacalui のトーンと合う</td></tr>
+    <tr><td>一貫した 24x24 グリッド、2px ストローク</td></tr>
+    <tr><td>MIT ライセンス</td></tr>
+    <tr><td>1000+ のアイコンを収録</td></tr>
+  </tbody>
+</table>
+
+Lucide で足りない場合のみ、他のセットから補完します。
+
+## 使い方
+
+```html
+<!-- 基本 -->
+<div class="i-lucide-search" />
+
+<!-- サイズ変更 -->
+<div class="i-lucide-search text-lg" />
+<div class="i-lucide-search text-2xl" />
+
+<!-- 色を変更 -->
+<div class="i-lucide-search text-blue-600" />
+<div class="i-lucide-search text-semantic-fg-primary" />
+
+<!-- ボタン内 -->
+<button class="flex items-center gap-2">
+  <div class="i-lucide-plus" />
+  追加する
+</button>
+```
+
+## サイズ規約
+
+<table>
+  <thead>
+    <tr><th>用途</th><th>クラス</th><th>実サイズ</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>インラインテキスト</td><td><code>text-sm</code></td><td>14px</td></tr>
+    <tr><td>デフォルト（ボタン等）</td><td><code>text-base</code></td><td>16px</td></tr>
+    <tr><td>強調・ナビゲーション</td><td><code>text-xl</code></td><td>20px</td></tr>
+    <tr><td>大きいアイコン</td><td><code>text-2xl</code></td><td>24px</td></tr>
+  </tbody>
+</table>
+
+## スタイルルール
+
+- **ストロークスタイルのみ** — 塗りつぶし（filled）アイコンは使わない
+- **同じセットから** — 1つの画面内で複数のアイコンセットを混在させない
+- **意味のあるアイコンにはラベルを** — アイコン単体のボタンには `aria-label` を必ず付ける
+- **装飾アイコンは `aria-hidden`** — テキストと併用する場合、アイコンは `aria-hidden="true"`
+
+## アクセシビリティ
+
+```html
+<!-- アイコン + テキスト → アイコンは装飾 -->
+<button>
+  <div class="i-lucide-trash-2" aria-hidden="true" />
+  削除する
+</button>
+
+<!-- アイコンのみ → aria-label 必須 -->
+<button aria-label="削除する">
+  <div class="i-lucide-trash-2" />
+</button>
+```
+
+## 予約アイコン
+
+以下のアイコンは特定の意味に固定して使います。一貫性のために他の用途で使わないでください。
+
+<table>
+  <thead>
+    <tr><th>アイコン</th><th>クラス</th><th>用途</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>✕</td><td><code>i-lucide-x</code></td><td>閉じる・キャンセル</td></tr>
+    <tr><td>←</td><td><code>i-lucide-arrow-left</code></td><td>戻る</td></tr>
+    <tr><td>✓</td><td><code>i-lucide-check</code></td><td>完了・成功</td></tr>
+    <tr><td>⚠</td><td><code>i-lucide-alert-triangle</code></td><td>警告</td></tr>
+    <tr><td>ℹ</td><td><code>i-lucide-info</code></td><td>情報</td></tr>
+    <tr><td>⊘</td><td><code>i-lucide-alert-circle</code></td><td>エラー</td></tr>
+    <tr><td>⋯</td><td><code>i-lucide-more-horizontal</code></td><td>その他のアクション</td></tr>
+    <tr><td>🔍</td><td><code>i-lucide-search</code></td><td>検索</td></tr>
+    <tr><td>＋</td><td><code>i-lucide-plus</code></td><td>追加・新規作成</td></tr>
+    <tr><td>🗑</td><td><code>i-lucide-trash-2</code></td><td>削除</td></tr>
+  </tbody>
+</table>
