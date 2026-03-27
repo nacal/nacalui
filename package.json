@@ -17,6 +17,7 @@
     "node": ">=22",
     "pnpm": ">=10"
   },
+  "packageManager": "pnpm@10.32.1",
   "devDependencies": {
     "@biomejs/biome": "^2.4.9",
     "@nacal-tools/biome-config": "^0.2.2"
