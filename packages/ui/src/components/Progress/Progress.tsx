@@ -1,5 +1,4 @@
 import { clsx } from "clsx"
-import type { HTMLAttributes } from "react"
 import {
   Label as AriaLabel,
   ProgressBar as AriaProgressBar,
@@ -9,11 +8,8 @@ import {
 export type ProgressSize = "sm" | "md" | "lg"
 
 export interface ProgressProps extends AriaProgressBarProps {
-  /** ラベル。 */
   label?: string
-  /** サイズ。 @default "md" */
   size?: ProgressSize
-  /** 値を表示するか。 @default false */
   showValue?: boolean
 }
 
@@ -23,12 +19,6 @@ const sizeStyles: Record<ProgressSize, string> = {
   lg: "h-3"
 }
 
-/**
- * プログレスバー。処理の進行状況を示す。
- * react-aria-components ベースでスクリーンリーダー対応。
- *
- * @summary 確定的・不確定的な進行状況を示すバー。
- */
 export function Progress({
   label,
   size = "md",
@@ -46,12 +36,12 @@ export function Progress({
           {(label || showValue) && (
             <div className="flex justify-between text-sm">
               {label && (
-                <AriaLabel className="text-stone-700 font-medium">
+                <AriaLabel className="text-[var(--color-fg-primary)] font-medium">
                   {label}
                 </AriaLabel>
               )}
               {showValue && !isIndeterminate && (
-                <span className="text-stone-500 text-xs font-mono">
+                <span className="text-[var(--color-fg-secondary)] text-xs font-mono">
                   {valueText}
                 </span>
               )}
@@ -59,18 +49,16 @@ export function Progress({
           )}
           <div
             className={clsx(
-              "w-full bg-stone-200 rounded-full overflow-hidden",
+              "w-full bg-[var(--color-bg-tertiary)] rounded-full overflow-hidden",
               sizeStyles[size]
             )}
           >
             <div
               className={clsx(
-                "h-full bg-stone-900 rounded-full transition-all duration-300",
+                "h-full bg-[var(--color-fg-primary)] rounded-full transition-all duration-300",
                 isIndeterminate && "nacalui-progress-indeterminate"
               )}
-              style={{
-                width: isIndeterminate ? "40%" : `${percentage}%`
-              }}
+              style={{ width: isIndeterminate ? "40%" : `${percentage}%` }}
             />
           </div>
         </>

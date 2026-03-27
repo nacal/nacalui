@@ -50,17 +50,17 @@ export function BreadcrumbItem({ href, children }: BreadcrumbItemProps) {
           clsx(
             "outline-none transition-colors",
             renderProps.isCurrent
-              ? "text-stone-900 font-medium cursor-default"
-              : "text-stone-500 hover:text-stone-700 cursor-pointer",
+              ? "text-[var(--color-fg-primary)] font-medium cursor-default"
+              : "text-[var(--color-fg-secondary)] hover:text-[var(--color-fg-primary)] cursor-pointer",
             renderProps.isFocusVisible &&
-              "ring-2 ring-stone-900 ring-offset-2 rounded"
+              "ring-2 ring-[var(--color-fg-primary)] ring-offset-2 rounded"
           )
         }
       >
         {children}
       </AriaLink>
       <span
-        className="i-lucide-chevron-right text-stone-300 text-xs last:hidden"
+        className="i-lucide-chevron-right text-[var(--color-fg-tertiary)] text-xs last:hidden"
         aria-hidden="true"
       />
     </AriaBreadcrumb>

@@ -41,18 +41,9 @@ export interface SelectProps {
 }
 
 const sizeStyles: Record<SelectSize, { trigger: string; label: string }> = {
-  sm: {
-    trigger: "h-8 px-3 text-sm rounded-md",
-    label: "text-xs"
-  },
-  md: {
-    trigger: "h-10 px-3 text-sm rounded-lg",
-    label: "text-sm"
-  },
-  lg: {
-    trigger: "h-12 px-4 text-base rounded-xl",
-    label: "text-base"
-  }
+  sm: { trigger: "h-8 px-3 text-sm rounded-md", label: "text-xs" },
+  md: { trigger: "h-10 px-3 text-sm rounded-lg", label: "text-sm" },
+  lg: { trigger: "h-12 px-4 text-base rounded-xl", label: "text-base" }
 }
 
 /**
@@ -76,7 +67,6 @@ export function Select({
   className
 }: SelectProps) {
   const sizes = sizeStyles[size]
-
   return (
     <AriaSelect
       placeholder={placeholder}
@@ -88,7 +78,12 @@ export function Select({
       className={clsx("flex flex-col gap-1.5", className)}
     >
       {label && (
-        <AriaLabel className={clsx("font-medium text-stone-700", sizes.label)}>
+        <AriaLabel
+          className={clsx(
+            "font-medium text-[var(--color-fg-primary)]",
+            sizes.label
+          )}
+        >
           {label}
         </AriaLabel>
       )}
@@ -96,24 +91,27 @@ export function Select({
         className={renderProps =>
           clsx(
             "nacalui-select-trigger",
-            "flex items-center justify-between w-full border bg-white text-stone-900",
-            "border-stone-300",
+            "flex items-center justify-between w-full border bg-[var(--color-bg-primary)] text-[var(--color-fg-primary)]",
+            "border-[var(--color-border-strong)]",
             "transition-all duration-200",
-            "focus:outline-none focus:ring-2 focus:ring-stone-900 focus:ring-offset-1 focus:border-stone-900",
+            "focus:outline-none focus:ring-2 focus:ring-[var(--color-fg-primary)] focus:ring-offset-1 focus:border-[var(--color-fg-primary)]",
             renderProps.isDisabled &&
-              "opacity-50 cursor-not-allowed bg-stone-50",
+              "opacity-50 cursor-not-allowed bg-[var(--color-bg-secondary)]",
             sizes.trigger
           )
         }
       >
-        <SelectValue className="truncate placeholder:text-stone-400" />
+        <SelectValue className="truncate placeholder:text-[var(--color-fg-tertiary)]" />
         <span
-          className="i-lucide-chevron-down text-stone-400 text-base ml-2 shrink-0"
+          className="i-lucide-chevron-down text-[var(--color-fg-tertiary)] text-base ml-2 shrink-0"
           aria-hidden="true"
         />
       </AriaButton>
       {description && !errorMessage && (
-        <Text slot="description" className="text-xs text-stone-500">
+        <Text
+          slot="description"
+          className="text-xs text-[var(--color-fg-secondary)]"
+        >
           {description}
         </Text>
       )}
@@ -122,7 +120,7 @@ export function Select({
           {errorMessage}
         </Text>
       )}
-      <Popover className="nacalui-select-popover w-[var(--trigger-width)] bg-white border border-stone-200 rounded-lg shadow-lg overflow-hidden">
+      <Popover className="nacalui-select-popover w-[var(--trigger-width)] bg-[var(--color-bg-primary)] border border-[var(--color-border-default)] rounded-lg shadow-lg overflow-hidden">
         <ListBox className="p-1 outline-none max-h-60 overflow-auto">
           {children}
         </ListBox>
@@ -144,9 +142,9 @@ export function SelectItem({ children, ...props }: SelectItemProps) {
       className={renderProps =>
         clsx(
           "px-3 py-2 text-sm rounded-md cursor-pointer outline-none transition-colors",
-          "text-stone-800",
-          renderProps.isFocused && "bg-stone-100",
-          renderProps.isSelected && "bg-stone-900 text-white"
+          "text-[var(--color-fg-primary)]",
+          renderProps.isFocused && "bg-[var(--color-bg-secondary)]",
+          renderProps.isSelected && "bg-[var(--color-fg-primary)] text-white"
         )
       }
     >

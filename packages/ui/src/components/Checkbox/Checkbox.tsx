@@ -23,7 +23,7 @@ export function Checkbox({ children, className, ...props }: CheckboxProps) {
       className={renderProps =>
         clsx(
           "nacalui-checkbox",
-          "group flex items-center gap-2 text-sm text-stone-800 cursor-pointer",
+          "group flex items-center gap-2 text-sm text-[var(--color-fg-primary)] cursor-pointer",
           renderProps.isDisabled && "opacity-50 cursor-not-allowed",
           typeof className === "function" ? className(renderProps) : className
         )
@@ -35,10 +35,10 @@ export function Checkbox({ children, className, ...props }: CheckboxProps) {
             className={clsx(
               "flex items-center justify-center w-5 h-5 rounded-md border-2 transition-all duration-200",
               renderProps.isSelected || renderProps.isIndeterminate
-                ? "bg-stone-900 border-stone-900 text-white"
-                : "border-stone-300 bg-white",
+                ? "bg-[var(--color-fg-primary)] border-[var(--color-fg-primary)] text-white"
+                : "border-[var(--color-border-strong)] bg-[var(--color-bg-primary)]",
               renderProps.isFocusVisible &&
-                "ring-2 ring-stone-900 ring-offset-2"
+                "ring-2 ring-[var(--color-fg-primary)] ring-offset-2"
             )}
           >
             {renderProps.isIndeterminate ? (

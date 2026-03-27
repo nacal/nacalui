@@ -1,6 +1,6 @@
-import { intentColors } from "@nacalui/tokens"
 import { clsx } from "clsx"
 import type { CSSProperties, HTMLAttributes, ReactNode } from "react"
+import { intentVar } from "../../utils/intent-vars"
 
 export type BadgeIntent =
   | "primary"
@@ -27,32 +27,28 @@ const sizeStyles: Record<BadgeSize, string> = {
   md: "px-2.5 py-1 text-sm rounded-lg"
 }
 
-const tokens = intentColors.light
-
 function getTokenVars(
   intent: BadgeIntent,
   variant: BadgeVariant
 ): CSSProperties {
-  const t = tokens[intent]
-
   switch (variant) {
     case "filled":
       return {
-        "--badge-bg": t.base,
-        "--badge-color": t.contrast,
+        "--badge-bg": intentVar(intent, "base"),
+        "--badge-color": intentVar(intent, "contrast"),
         "--badge-border": "transparent"
       } as CSSProperties
     case "light":
       return {
-        "--badge-bg": t.light,
-        "--badge-color": t.fg,
+        "--badge-bg": intentVar(intent, "light"),
+        "--badge-color": intentVar(intent, "fg"),
         "--badge-border": "transparent"
       } as CSSProperties
     case "outline":
       return {
         "--badge-bg": "transparent",
-        "--badge-color": t.fg,
-        "--badge-border": t.base
+        "--badge-color": intentVar(intent, "fg"),
+        "--badge-border": intentVar(intent, "base")
       } as CSSProperties
   }
 }

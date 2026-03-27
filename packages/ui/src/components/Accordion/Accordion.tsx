@@ -27,7 +27,12 @@ export interface AccordionItemProps {
  */
 export function Accordion({ children, className }: AccordionProps) {
   return (
-    <div className={clsx("divide-y divide-stone-200", className)}>
+    <div
+      className={clsx(
+        "divide-y divide-[var(--color-border-default)]",
+        className
+      )}
+    >
       {children}
     </div>
   )
@@ -44,14 +49,16 @@ export function AccordionItem({
       open={defaultOpen || undefined}
       className={clsx("nacalui-accordion-item group", className)}
     >
-      <summary className="flex items-center justify-between py-4 cursor-pointer list-none text-sm font-medium text-stone-900 hover:text-stone-700 outline-none focus-visible:ring-2 focus-visible:ring-stone-900 focus-visible:ring-offset-2 rounded">
+      <summary className="flex items-center justify-between py-4 cursor-pointer list-none text-sm font-medium text-[var(--color-fg-primary)] outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-fg-primary)] focus-visible:ring-offset-2 rounded">
         {title}
         <span
-          className="i-lucide-chevron-down text-stone-400 text-base transition-transform duration-200 group-open:rotate-180"
+          className="i-lucide-chevron-down text-[var(--color-fg-tertiary)] text-base transition-transform duration-200 group-open:rotate-180"
           aria-hidden="true"
         />
       </summary>
-      <div className="pb-4 text-sm text-stone-600">{children}</div>
+      <div className="pb-4 text-sm text-[var(--color-fg-secondary)]">
+        {children}
+      </div>
     </details>
   )
 }

@@ -11,20 +11,11 @@ import "./tooltip.css"
 
 export interface TooltipProps
   extends Omit<TooltipTriggerComponentProps, "children"> {
-  /** ツールチップのコンテンツ。 */
   content: ReactNode
-  /** トリガーとなる要素。 */
   children: ReactNode
-  /** 表示位置。 @default "top" */
   placement?: "top" | "bottom" | "left" | "right"
 }
 
-/**
- * ツールチップ。ホバーやフォーカスで補足情報を表示する。
- * react-aria-components ベースでアクセシビリティ対応。
- *
- * @summary トリガー要素にホバー/フォーカスするとポップアップが表示される。
- */
 export function Tooltip({
   content,
   children,
@@ -41,7 +32,7 @@ export function Tooltip({
         placement={placement}
         className={clsx(
           "nacalui-tooltip",
-          "bg-stone-900 text-white text-xs px-2.5 py-1.5 rounded-lg shadow-lg",
+          "bg-[var(--color-fg-primary)] text-white text-xs px-2.5 py-1.5 rounded-lg shadow-lg",
           "max-w-xs"
         )}
       >
@@ -50,7 +41,7 @@ export function Tooltip({
             width={12}
             height={6}
             viewBox="0 0 12 6"
-            className="fill-stone-900"
+            className="fill-[var(--color-fg-primary)]"
             aria-hidden="true"
           >
             <path d="M0 0L6 6L12 0" />

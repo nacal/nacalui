@@ -4,9 +4,7 @@ import type { HTMLAttributes } from "react"
 export type SpinnerSize = "sm" | "md" | "lg"
 
 export interface SpinnerProps extends HTMLAttributes<HTMLDivElement> {
-  /** サイズ。 @default "md" */
   size?: SpinnerSize
-  /** ラベル（スクリーンリーダー用）。 @default "読み込み中" */
   label?: string
 }
 
@@ -16,11 +14,6 @@ const sizeStyles: Record<SpinnerSize, string> = {
   lg: "w-8 h-8"
 }
 
-/**
- * ローディングスピナー。非同期処理中に表示する。
- *
- * @summary 回転アニメーションのローディングインジケーター。
- */
 export function Spinner({
   size = "md",
   label = "読み込み中",
@@ -35,7 +28,7 @@ export function Spinner({
     >
       <span
         className={clsx(
-          "i-lucide-loader-2 animate-spin text-stone-500",
+          "i-lucide-loader-2 animate-spin text-[var(--color-fg-secondary)]",
           sizeStyles[size]
         )}
         aria-hidden="true"

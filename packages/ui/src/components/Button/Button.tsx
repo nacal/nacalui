@@ -1,10 +1,10 @@
-import { intentColors } from "@nacalui/tokens"
 import { clsx } from "clsx"
-import type { CSSProperties, ReactNode } from "react"
+import type { ReactNode } from "react"
 import {
   Button as AriaButton,
   type ButtonProps as AriaButtonProps
 } from "react-aria-components"
+import { getIntentTokenVars } from "../../utils/intent-vars"
 import "./button.css"
 
 export type ButtonIntent =
@@ -37,50 +37,6 @@ const sizeStyles: Record<ButtonSize, string> = {
   lg: "h-12 px-6 text-base gap-2 rounded-xl"
 }
 
-const tokens = intentColors.light
-
-function getTokenVars(
-  intent: ButtonIntent,
-  variant: ButtonVariant
-): CSSProperties {
-  const t = tokens[intent]
-
-  switch (variant) {
-    case "filled":
-      return {
-        "--btn-bg": t.base,
-        "--btn-bg-hover": t.hover,
-        "--btn-bg-active": t.hover,
-        "--btn-color": t.contrast,
-        "--btn-border": "transparent"
-      } as CSSProperties
-    case "outline":
-      return {
-        "--btn-bg": "transparent",
-        "--btn-bg-hover": t.light,
-        "--btn-bg-active": t.lightHover,
-        "--btn-color": t.fg,
-        "--btn-border": t.base
-      } as CSSProperties
-    case "light":
-      return {
-        "--btn-bg": t.light,
-        "--btn-bg-hover": t.lightHover,
-        "--btn-bg-active": t.lightHover,
-        "--btn-color": t.fg,
-        "--btn-border": "transparent"
-      } as CSSProperties
-    case "ghost":
-      return {
-        "--btn-bg": "transparent",
-        "--btn-bg-hover": t.light,
-        "--btn-bg-active": t.lightHover,
-        "--btn-color": t.fg,
-        "--btn-border": "transparent"
-      } as CSSProperties
-  }
-}
-
 /**
  * アクションを実行するためのボタンコンポーネント。
  * react-aria-components ベースでアクセシビリティを担保。
@@ -101,7 +57,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const disabled = isDisabled || loading
-  const tokenVars = getTokenVars(intent, variant)
+  const tokenVars = getIntentTokenVars(intent, variant)
 
   return (
     <AriaButton

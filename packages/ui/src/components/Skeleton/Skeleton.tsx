@@ -5,11 +5,8 @@ import "./skeleton.css"
 export type SkeletonVariant = "text" | "circular" | "rectangular"
 
 export interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
-  /** 形状。 @default "text" */
   variant?: SkeletonVariant
-  /** 幅。CSS値で指定。 @default "100%" */
   width?: string | number
-  /** 高さ。CSS値で指定。 */
   height?: string | number
 }
 
@@ -19,12 +16,6 @@ const variantStyles: Record<SkeletonVariant, string> = {
   rectangular: "rounded-lg"
 }
 
-/**
- * ローディングプレースホルダー。コンテンツ読み込み中に表示する。
- * アニメーション付きのパルスエフェクト。
- *
- * @summary text, circular, rectangular の3バリアント。
- */
 export function Skeleton({
   variant = "text",
   width,
@@ -36,7 +27,7 @@ export function Skeleton({
   return (
     <div
       className={clsx(
-        "nacalui-skeleton bg-stone-200",
+        "nacalui-skeleton bg-[var(--color-bg-tertiary)]",
         variantStyles[variant],
         className
       )}

@@ -41,13 +41,10 @@ describe("DropdownMenu", () => {
 
     if (expected.trigger)
       expect(screen.getByText(expected.trigger)).toBeInTheDocument()
-    if (expected.menu)
-      expect(screen.getByRole("menu")).toBeInTheDocument()
+    if (expected.menu) expect(screen.getByRole("menu")).toBeInTheDocument()
     if (expected.items) {
       for (const item of expected.items) {
-        expect(
-          screen.getByRole("menuitem", { name: item })
-        ).toBeInTheDocument()
+        expect(screen.getByRole("menuitem", { name: item })).toBeInTheDocument()
       }
     }
   })

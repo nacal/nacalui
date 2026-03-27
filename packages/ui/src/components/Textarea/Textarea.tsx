@@ -30,12 +30,6 @@ const sizeStyles: Record<TextareaSize, { field: string; label: string }> = {
   lg: { field: "px-4 py-3 text-base rounded-xl", label: "text-base" }
 }
 
-/**
- * 複数行テキスト入力。
- * react-aria-components ベースでアクセシビリティを担保。
- *
- * @summary ラベル、説明、エラーメッセージをサポートするテキストエリア。
- */
 export function Textarea({
   label,
   description,
@@ -47,14 +41,18 @@ export function Textarea({
   ...props
 }: TextareaProps) {
   const sizes = sizeStyles[size]
-
   return (
     <AriaTextField
       {...props}
       className={clsx("flex flex-col gap-1.5", className as string)}
     >
       {label && (
-        <AriaLabel className={clsx("font-medium text-stone-700", sizes.label)}>
+        <AriaLabel
+          className={clsx(
+            "font-medium text-[var(--color-fg-primary)]",
+            sizes.label
+          )}
+        >
           {label}
         </AriaLabel>
       )}
@@ -63,13 +61,13 @@ export function Textarea({
         rows={rows}
         className={renderProps =>
           clsx(
-            "w-full border bg-white text-stone-900 resize-y",
-            "border-stone-300",
-            "placeholder:text-stone-400",
+            "w-full border bg-[var(--color-bg-primary)] text-[var(--color-fg-primary)] resize-y",
+            "border-[var(--color-border-strong)]",
+            "placeholder:text-[var(--color-fg-tertiary)]",
             "transition-all duration-200",
-            "focus:outline-none focus:ring-2 focus:ring-stone-900 focus:ring-offset-1 focus:border-stone-900",
+            "focus:outline-none focus:ring-2 focus:ring-[var(--color-fg-primary)] focus:ring-offset-1 focus:border-[var(--color-fg-primary)]",
             renderProps.isDisabled &&
-              "opacity-50 cursor-not-allowed bg-stone-50 resize-none",
+              "opacity-50 cursor-not-allowed bg-[var(--color-bg-secondary)] resize-none",
             renderProps.isInvalid &&
               "border-red-500 focus:ring-red-500 focus:border-red-500",
             sizes.field
@@ -77,7 +75,10 @@ export function Textarea({
         }
       />
       {description && !errorMessage && (
-        <Text slot="description" className="text-xs text-stone-500">
+        <Text
+          slot="description"
+          className="text-xs text-[var(--color-fg-secondary)]"
+        >
           {description}
         </Text>
       )}

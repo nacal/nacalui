@@ -40,8 +40,7 @@ describe("Dialog", () => {
       expect(
         screen.getByRole("button", { name: expected.trigger })
       ).toBeInTheDocument()
-    if (expected.dialog)
-      expect(screen.getByRole("dialog")).toBeInTheDocument()
+    if (expected.dialog) expect(screen.getByRole("dialog")).toBeInTheDocument()
     if (expected.title)
       expect(screen.getByText(expected.title)).toBeInTheDocument()
     if (expected.content)

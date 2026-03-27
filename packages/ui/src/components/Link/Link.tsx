@@ -13,9 +13,11 @@ export interface LinkProps extends AriaLinkProps {
 
 const variantStyles: Record<LinkVariant, string> = {
   default:
-    "text-stone-900 underline underline-offset-2 decoration-stone-300 hover:decoration-stone-900",
-  muted: "text-stone-500 hover:text-stone-700 no-underline",
-  underline: "text-stone-900 underline underline-offset-4 hover:decoration-2"
+    "text-[var(--color-fg-primary)] underline underline-offset-2 decoration-[var(--color-border-strong)] hover:decoration-[var(--color-fg-primary)]",
+  muted:
+    "text-[var(--color-fg-secondary)] hover:text-[var(--color-fg-primary)] no-underline",
+  underline:
+    "text-[var(--color-fg-primary)] underline underline-offset-4 hover:decoration-2"
 }
 
 /**
@@ -32,7 +34,7 @@ export function Link({ variant = "default", className, ...props }: LinkProps) {
         clsx(
           "text-sm transition-colors duration-200 outline-none cursor-pointer",
           renderProps.isFocusVisible &&
-            "ring-2 ring-stone-900 ring-offset-2 rounded",
+            "ring-2 ring-[var(--color-fg-primary)] ring-offset-2 rounded",
           renderProps.isDisabled && "opacity-50 cursor-not-allowed",
           variantStyles[variant],
           typeof className === "function" ? className(renderProps) : className

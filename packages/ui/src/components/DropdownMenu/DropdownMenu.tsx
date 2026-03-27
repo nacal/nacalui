@@ -43,7 +43,7 @@ export function DropdownMenu({
       <AriaButton className="outline-none">{trigger}</AriaButton>
       <Popover
         placement={placement}
-        className="nacalui-dropdown-popover bg-white border border-stone-200 rounded-lg shadow-lg overflow-hidden"
+        className="nacalui-dropdown-popover bg-[var(--color-bg-primary)] border border-[var(--color-border-default)] rounded-lg shadow-lg overflow-hidden"
       >
         <Menu className="p-1 outline-none min-w-40">{children}</Menu>
       </Popover>
@@ -63,8 +63,9 @@ export function DropdownMenuItem({
       className={renderProps =>
         clsx(
           "px-3 py-2 text-sm rounded-md cursor-pointer outline-none transition-colors",
-          isDanger ? "text-red-600" : "text-stone-800",
-          renderProps.isFocused && (isDanger ? "bg-red-50" : "bg-stone-100"),
+          isDanger ? "text-red-600" : "text-[var(--color-fg-primary)]",
+          renderProps.isFocused &&
+            (isDanger ? "bg-red-50" : "bg-[var(--color-bg-secondary)]"),
           renderProps.isDisabled && "opacity-50 cursor-not-allowed",
           typeof className === "function" ? className(renderProps) : className
         )
@@ -76,5 +77,5 @@ export function DropdownMenuItem({
 }
 
 export function DropdownMenuSeparator() {
-  return <Separator className="my-1 h-px bg-stone-200" />
+  return <Separator className="my-1 h-px bg-[var(--color-border-default)]" />
 }

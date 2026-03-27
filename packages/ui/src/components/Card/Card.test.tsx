@@ -12,12 +12,12 @@ describe("Card", () => {
     {
       name: "outlined",
       props: { variant: "outlined" as const },
-      expected: { className: "border-stone-200" }
+      expected: { className: "border" }
     },
     {
       name: "filled",
       props: { variant: "filled" as const },
-      expected: { className: "bg-stone-50" }
+      expected: { className: "bg-[var(--color-bg-secondary)]" }
     },
     {
       name: "CardHeader, CardBody, CardFooter が表示される",

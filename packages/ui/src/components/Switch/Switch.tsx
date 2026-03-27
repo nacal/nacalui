@@ -21,7 +21,7 @@ export function Switch({ children, className, ...props }: SwitchProps) {
       {...props}
       className={renderProps =>
         clsx(
-          "group flex items-center gap-3 text-sm text-stone-800 cursor-pointer",
+          "group flex items-center gap-3 text-sm text-[var(--color-fg-primary)] cursor-pointer",
           renderProps.isDisabled && "opacity-50 cursor-not-allowed",
           typeof className === "function" ? className(renderProps) : className
         )
@@ -32,9 +32,11 @@ export function Switch({ children, className, ...props }: SwitchProps) {
           <div
             className={clsx(
               "w-10 h-6 rounded-full p-0.5 transition-all duration-200",
-              renderProps.isSelected ? "bg-stone-900" : "bg-stone-300",
+              renderProps.isSelected
+                ? "bg-[var(--color-fg-primary)]"
+                : "bg-[var(--color-border-strong)]",
               renderProps.isFocusVisible &&
-                "ring-2 ring-stone-900 ring-offset-2"
+                "ring-2 ring-[var(--color-fg-primary)] ring-offset-2"
             )}
           >
             <div

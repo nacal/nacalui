@@ -1,6 +1,6 @@
-import { intentColors } from "@nacalui/tokens"
 import { clsx } from "clsx"
 import type { CSSProperties, HTMLAttributes, ReactNode } from "react"
+import { intentVar, semanticVar } from "../../utils/intent-vars"
 
 export type AlertIntent = "primary" | "danger" | "success" | "warning"
 
@@ -15,8 +15,6 @@ export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode
 }
 
-const tokens = intentColors.light
-
 const intentIcons: Record<AlertIntent, string> = {
   primary: "i-lucide-info",
   danger: "i-lucide-alert-circle",
@@ -25,12 +23,11 @@ const intentIcons: Record<AlertIntent, string> = {
 }
 
 function getAlertVars(intent: AlertIntent): CSSProperties {
-  const t = tokens[intent]
   return {
-    "--alert-bg": t.light,
-    "--alert-border": t.base,
-    "--alert-icon": t.fg,
-    "--alert-title": t.fg
+    "--alert-bg": intentVar(intent, "light"),
+    "--alert-border": intentVar(intent, "base"),
+    "--alert-icon": intentVar(intent, "fg"),
+    "--alert-title": intentVar(intent, "fg")
   } as CSSProperties
 }
 
@@ -80,7 +77,12 @@ export function Alert({
             {title}
           </div>
         )}
-        <div className="text-sm text-stone-700">{children}</div>
+        <div
+          className="text-sm"
+          style={{ color: semanticVar("fg", "primary") }}
+        >
+          {children}
+        </div>
       </div>
     </div>
   )

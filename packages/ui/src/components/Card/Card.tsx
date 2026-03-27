@@ -23,9 +23,12 @@ export interface CardFooterProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const variantStyles: Record<CardVariant, string> = {
-  elevated: "bg-white shadow-base border border-stone-100",
-  outlined: "bg-white border border-stone-200",
-  filled: "bg-stone-50 border border-stone-100"
+  elevated:
+    "bg-[var(--color-bg-primary)] shadow-base border border-[var(--color-border-default)]",
+  outlined:
+    "bg-[var(--color-bg-primary)] border border-[var(--color-border-default)]",
+  filled:
+    "bg-[var(--color-bg-secondary)] border border-[var(--color-border-default)]"
 }
 
 /**

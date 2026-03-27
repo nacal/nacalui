@@ -45,13 +45,16 @@ export function RadioGroup({
       className={clsx("flex flex-col gap-2", className as string)}
     >
       {label && (
-        <AriaLabel className="text-sm font-medium text-stone-700">
+        <AriaLabel className="text-sm font-medium text-[var(--color-fg-primary)]">
           {label}
         </AriaLabel>
       )}
       <div className="flex flex-col gap-2">{children}</div>
       {description && !errorMessage && (
-        <Text slot="description" className="text-xs text-stone-500">
+        <Text
+          slot="description"
+          className="text-xs text-[var(--color-fg-secondary)]"
+        >
           {description}
         </Text>
       )}
@@ -70,7 +73,7 @@ export function Radio({ children, className, ...props }: RadioProps) {
       {...props}
       className={renderProps =>
         clsx(
-          "group flex items-center gap-2 text-sm text-stone-800 cursor-pointer",
+          "group flex items-center gap-2 text-sm text-[var(--color-fg-primary)] cursor-pointer",
           renderProps.isDisabled && "opacity-50 cursor-not-allowed",
           typeof className === "function" ? className(renderProps) : className
         )
@@ -81,13 +84,15 @@ export function Radio({ children, className, ...props }: RadioProps) {
           <div
             className={clsx(
               "flex items-center justify-center w-5 h-5 rounded-full border-2 transition-all duration-200",
-              renderProps.isSelected ? "border-stone-900" : "border-stone-300",
+              renderProps.isSelected
+                ? "border-[var(--color-fg-primary)]"
+                : "border-[var(--color-border-strong)]",
               renderProps.isFocusVisible &&
-                "ring-2 ring-stone-900 ring-offset-2"
+                "ring-2 ring-[var(--color-fg-primary)] ring-offset-2"
             )}
           >
             {renderProps.isSelected && (
-              <div className="w-2.5 h-2.5 rounded-full bg-stone-900" />
+              <div className="w-2.5 h-2.5 rounded-full bg-[var(--color-fg-primary)]" />
             )}
           </div>
           {children}

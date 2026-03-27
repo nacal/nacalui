@@ -15,14 +15,38 @@ import "../../../packages/ui/src/components/Accordion/accordion.css"
 import type { Preview } from "@storybook/react"
 
 const preview: Preview = {
+  globalTypes: {
+    theme: {
+      description: "Theme",
+      toolbar: {
+        title: "Theme",
+        icon: "sun",
+        items: [
+          { value: "light", title: "Light", icon: "sun" },
+          { value: "dark", title: "Dark", icon: "moon" }
+        ],
+        dynamicTitle: true
+      }
+    }
+  },
+  initialGlobals: {
+    theme: "light"
+  },
+  decorators: [
+    (Story, context) => {
+      const theme = context.globals.theme || "light"
+      const root = document.documentElement
+      if (theme === "dark") {
+        root.setAttribute("data-theme", "dark")
+      } else {
+        root.removeAttribute("data-theme")
+      }
+      document.body.style.backgroundColor =
+        theme === "dark" ? "#1c1917" : "#fafaf9"
+      return Story()
+    }
+  ],
   parameters: {
-    backgrounds: {
-      default: "light",
-      values: [
-        { name: "light", value: "#fafaf9" },
-        { name: "dark", value: "#1c1917" }
-      ]
-    },
     layout: "centered"
   }
 }

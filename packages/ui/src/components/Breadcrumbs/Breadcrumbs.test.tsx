@@ -28,7 +28,6 @@ describe("Breadcrumbs", () => {
         expect(screen.getByText(item)).toBeInTheDocument()
       }
     }
-    if (expected.hasList)
-      expect(screen.getByRole("list")).toBeInTheDocument()
+    if (expected.hasList) expect(screen.getByRole("list")).toBeInTheDocument()
   })
 })

@@ -1,4 +1,3 @@
-import { intentColors } from "@nacalui/tokens"
 import { clsx } from "clsx"
 import {
   type CSSProperties,
@@ -9,6 +8,7 @@ import {
   useRef,
   useState
 } from "react"
+import { intentVar, semanticVar } from "../../utils/intent-vars"
 import "./toast.css"
 
 export type ToastIntent = "primary" | "success" | "danger" | "warning"
@@ -39,15 +39,11 @@ export interface ToastProviderProps {
   children: ReactNode
 }
 
-const tokens = intentColors.light
-
 function getToastVars(intent: ToastIntent): CSSProperties {
-  const t = tokens[intent]
   return {
-    "--toast-bg": "white",
-    "--toast-border": t.base,
-    "--toast-accent": t.base,
-    "--toast-title": t.fg
+    "--toast-bg": semanticVar("bg", "primary"),
+    "--toast-border": intentVar(intent, "base"),
+    "--toast-title": intentVar(intent, "fg")
   } as CSSProperties
 }
 
@@ -106,16 +102,20 @@ function ToastItem({
     <div
       className={clsx(
         "nacalui-toast",
-        "bg-white border rounded-lg shadow-lg p-4 pr-10 relative",
+        "border rounded-lg shadow-lg p-4 pr-10 relative",
         "border-l-4"
       )}
-      style={vars}
+      style={{
+        backgroundColor: "var(--toast-bg)",
+        ...vars
+      }}
       role="alert"
     >
       <button
         type="button"
         onClick={onClose}
-        className="absolute top-2 right-2 p-1 rounded text-stone-400 hover:text-stone-600 transition-colors"
+        className="absolute top-2 right-2 p-1 rounded transition-colors"
+        style={{ color: semanticVar("fg", "tertiary") }}
         aria-label="閉じる"
       >
         <span className="i-lucide-x text-sm" />
@@ -127,7 +127,12 @@ function ToastItem({
         {data.title}
       </div>
       {data.description && (
-        <div className="text-xs text-stone-500 mt-1">{data.description}</div>
+        <div
+          className="text-xs mt-1"
+          style={{ color: semanticVar("fg", "secondary") }}
+        >
+          {data.description}
+        </div>
       )}
     </div>
   )
