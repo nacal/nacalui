@@ -1,0 +1,29 @@
+.nacalui-select-popover[data-entering] {
+  animation: nacalui-select-fade-in 150ms ease-out;
+}
+
+.nacalui-select-popover[data-exiting] {
+  animation: nacalui-select-fade-out 100ms ease-in;
+}
+
+@keyframes nacalui-select-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes nacalui-select-fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
