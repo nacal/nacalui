@@ -16,26 +16,44 @@ describe("Tabs", () => {
       </Tabs>
     )
 
-  test("タブが表示される", () => {
-    renderTabs()
-    expect(screen.getByRole("tab", { name: "タブA" })).toBeInTheDocument()
-    expect(screen.getByRole("tab", { name: "タブB" })).toBeInTheDocument()
-  })
+  const cases = [
+    {
+      name: "タブが表示される",
+      action: async () => {},
+      expected: { tabs: ["タブA", "タブB"] }
+    },
+    {
+      name: "デフォルト選択のパネルが表示される",
+      action: async () => {},
+      expected: { visiblePanel: "パネルA" }
+    },
+    {
+      name: "タブクリックでパネルが切り替わる",
+      action: async () => {
+        await userEvent.click(screen.getByRole("tab", { name: "タブB" }))
+      },
+      expected: { visiblePanel: "パネルB" }
+    },
+    {
+      name: "tablist ロールが存在する",
+      action: async () => {},
+      expected: { hasTablist: true }
+    }
+  ]
 
-  test("デフォルト選択のパネルが表示される", () => {
-    renderTabs()
-    expect(screen.getByText("パネルA")).toBeVisible()
-  })
-
-  test("タブクリックでパネルが切り替わる", async () => {
+  test.each(cases)("$name", async ({ action, expected }) => {
     renderTabs()
 
-    await userEvent.click(screen.getByRole("tab", { name: "タブB" }))
-    expect(screen.getByText("パネルB")).toBeVisible()
-  })
+    await action()
 
-  test("tablist ロールが存在する", () => {
-    renderTabs()
-    expect(screen.getByRole("tablist")).toBeInTheDocument()
+    if (expected.tabs) {
+      for (const tab of expected.tabs) {
+        expect(screen.getByRole("tab", { name: tab })).toBeInTheDocument()
+      }
+    }
+    if (expected.visiblePanel)
+      expect(screen.getByText(expected.visiblePanel)).toBeVisible()
+    if (expected.hasTablist)
+      expect(screen.getByRole("tablist")).toBeInTheDocument()
   })
 })

@@ -3,7 +3,18 @@ import { describe, expect, test } from "vitest"
 import { BreadcrumbItem, Breadcrumbs } from "./Breadcrumbs"
 
 describe("Breadcrumbs", () => {
-  test("全アイテムが表示される", () => {
+  const cases = [
+    {
+      name: "全アイテムが表示される",
+      expected: { items: ["ホーム", "設定", "現在"] }
+    },
+    {
+      name: "ナビゲーションランドマークが存在する",
+      expected: { hasList: true }
+    }
+  ]
+
+  test.each(cases)("$name", ({ expected }) => {
     render(
       <Breadcrumbs>
         <BreadcrumbItem href="#">ホーム</BreadcrumbItem>
@@ -11,17 +22,13 @@ describe("Breadcrumbs", () => {
         <BreadcrumbItem>現在</BreadcrumbItem>
       </Breadcrumbs>
     )
-    expect(screen.getByText("ホーム")).toBeInTheDocument()
-    expect(screen.getByText("設定")).toBeInTheDocument()
-    expect(screen.getByText("現在")).toBeInTheDocument()
-  })
 
-  test("ナビゲーションランドマークが存在する", () => {
-    render(
-      <Breadcrumbs>
-        <BreadcrumbItem>ホーム</BreadcrumbItem>
-      </Breadcrumbs>
-    )
-    expect(screen.getByRole("list")).toBeInTheDocument()
+    if (expected.items) {
+      for (const item of expected.items) {
+        expect(screen.getByText(item)).toBeInTheDocument()
+      }
+    }
+    if (expected.hasList)
+      expect(screen.getByRole("list")).toBeInTheDocument()
   })
 })

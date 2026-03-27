@@ -7,33 +7,32 @@ describe("Skeleton", () => {
     {
       name: "text（デフォルト）",
       props: {},
-      expectedClass: "rounded-md h-4"
+      expected: { className: "rounded-md h-4" }
     },
     {
       name: "circular",
       props: { variant: "circular" as const, width: 48, height: 48 },
-      expectedClass: "rounded-full"
+      expected: { className: "rounded-full" }
     },
     {
       name: "rectangular",
       props: { variant: "rectangular" as const },
-      expectedClass: "rounded-lg"
+      expected: { className: "rounded-lg" }
+    },
+    {
+      name: "width と height が style に反映される",
+      props: { width: "80%", height: 100 },
+      expected: { styleWidth: "80%", styleHeight: "100px" }
     }
   ]
 
-  test.each(cases)("$name", ({ props, expectedClass }) => {
+  test.each(cases)("$name", ({ props, expected }) => {
     const { container } = render(<Skeleton {...props} />)
     const el = container.firstChild as HTMLElement
 
-    expect(el.className).toContain(expectedClass)
     expect(el).toHaveAttribute("aria-hidden", "true")
-  })
-
-  test("width と height が style に反映される", () => {
-    const { container } = render(<Skeleton width="80%" height={100} />)
-    const el = container.firstChild as HTMLElement
-
-    expect(el.style.width).toBe("80%")
-    expect(el.style.height).toBe("100px")
+    if (expected.className) expect(el.className).toContain(expected.className)
+    if (expected.styleWidth) expect(el.style.width).toBe(expected.styleWidth)
+    if (expected.styleHeight) expect(el.style.height).toBe(expected.styleHeight)
   })
 })

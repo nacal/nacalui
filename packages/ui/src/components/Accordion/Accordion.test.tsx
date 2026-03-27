@@ -4,34 +4,43 @@ import { describe, expect, test } from "vitest"
 import { Accordion, AccordionItem } from "./Accordion"
 
 describe("Accordion", () => {
-  test("タイトルが表示される", () => {
-    render(
-      <Accordion>
-        <AccordionItem title="FAQ">回答です</AccordionItem>
-      </Accordion>
-    )
-    expect(screen.getByText("FAQ")).toBeInTheDocument()
-  })
+  const cases = [
+    {
+      name: "タイトルが表示される",
+      props: {},
+      action: async () => {},
+      expected: { title: "FAQ" }
+    },
+    {
+      name: "defaultOpen で初期状態が開いている",
+      props: { defaultOpen: true },
+      action: async () => {},
+      expected: { contentVisible: "回答です" }
+    },
+    {
+      name: "クリックで開閉する",
+      props: {},
+      action: async () => {
+        await userEvent.click(screen.getByText("FAQ"))
+      },
+      expected: { contentVisible: "回答です" }
+    }
+  ]
 
-  test("defaultOpen で初期状態が開いている", () => {
+  test.each(cases)("$name", async ({ props, action, expected }) => {
     render(
       <Accordion>
-        <AccordionItem title="FAQ" defaultOpen>
+        <AccordionItem title="FAQ" {...props}>
           回答です
         </AccordionItem>
       </Accordion>
     )
-    expect(screen.getByText("回答です")).toBeVisible()
-  })
 
-  test("クリックで開閉する", async () => {
-    render(
-      <Accordion>
-        <AccordionItem title="FAQ">回答です</AccordionItem>
-      </Accordion>
-    )
+    await action()
 
-    await userEvent.click(screen.getByText("FAQ"))
-    expect(screen.getByText("回答です")).toBeVisible()
+    if (expected.title)
+      expect(screen.getByText(expected.title)).toBeInTheDocument()
+    if (expected.contentVisible)
+      expect(screen.getByText(expected.contentVisible)).toBeVisible()
   })
 })

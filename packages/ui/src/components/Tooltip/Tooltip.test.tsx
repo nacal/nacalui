@@ -1,24 +1,29 @@
 import { render, screen } from "@testing-library/react"
-import userEvent from "@testing-library/user-event"
 import { describe, expect, test } from "vitest"
 import { Tooltip } from "./Tooltip"
 
 describe("Tooltip", () => {
-  test("トリガーが表示される", () => {
-    render(
-      <Tooltip content="ヒント">
-        <span>ホバー対象</span>
-      </Tooltip>
-    )
-    expect(screen.getByText("ホバー対象")).toBeInTheDocument()
-  })
+  const cases = [
+    {
+      name: "トリガーが表示される",
+      expected: { trigger: "ホバー対象" }
+    },
+    {
+      name: "初期状態でツールチップは非表示",
+      expected: { tooltipHidden: true }
+    }
+  ]
 
-  test("初期状態でツールチップは非表示", () => {
+  test.each(cases)("$name", ({ expected }) => {
     render(
       <Tooltip content="ヒント">
         <span>ホバー対象</span>
       </Tooltip>
     )
-    expect(screen.queryByRole("tooltip")).not.toBeInTheDocument()
+
+    if (expected.trigger)
+      expect(screen.getByText(expected.trigger)).toBeInTheDocument()
+    if (expected.tooltipHidden)
+      expect(screen.queryByRole("tooltip")).not.toBeInTheDocument()
   })
 })

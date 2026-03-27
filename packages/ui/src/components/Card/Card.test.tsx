@@ -3,42 +3,44 @@ import { describe, expect, test } from "vitest"
 import { Card, CardBody, CardFooter, CardHeader } from "./Card"
 
 describe("Card", () => {
-  const variantCases = [
+  const cases = [
     {
       name: "elevated（デフォルト）",
-      variant: undefined,
-      expectedClass: "shadow-base"
+      props: { variant: undefined },
+      expected: { className: "shadow-base" }
     },
     {
       name: "outlined",
-      variant: "outlined" as const,
-      expectedClass: "border-stone-200"
+      props: { variant: "outlined" as const },
+      expected: { className: "border-stone-200" }
     },
-    { name: "filled", variant: "filled" as const, expectedClass: "bg-stone-50" }
+    {
+      name: "filled",
+      props: { variant: "filled" as const },
+      expected: { className: "bg-stone-50" }
+    },
+    {
+      name: "CardHeader, CardBody, CardFooter が表示される",
+      props: {},
+      expected: { slots: ["ヘッダー", "ボディ", "フッター"] }
+    }
   ]
 
-  test.each(variantCases)("$name が正しくレンダリング", ({
-    variant,
-    expectedClass
-  }) => {
+  test.each(cases)("$name", ({ props, expected }) => {
     render(
-      <Card variant={variant} data-testid="card">
-        <CardBody>コンテンツ</CardBody>
-      </Card>
-    )
-    expect(screen.getByTestId("card").className).toContain(expectedClass)
-  })
-
-  test("CardHeader, CardBody, CardFooter が表示される", () => {
-    render(
-      <Card>
+      <Card variant={props.variant} data-testid="card">
         <CardHeader>ヘッダー</CardHeader>
         <CardBody>ボディ</CardBody>
         <CardFooter>フッター</CardFooter>
       </Card>
     )
-    expect(screen.getByText("ヘッダー")).toBeInTheDocument()
-    expect(screen.getByText("ボディ")).toBeInTheDocument()
-    expect(screen.getByText("フッター")).toBeInTheDocument()
+
+    if (expected.className)
+      expect(screen.getByTestId("card").className).toContain(expected.className)
+    if (expected.slots) {
+      for (const slot of expected.slots) {
+        expect(screen.getByText(slot)).toBeInTheDocument()
+      }
+    }
   })
 })

@@ -13,39 +13,51 @@ function ToastTrigger() {
 }
 
 describe("Toast", () => {
-  test("useToast でトーストが表示される", async () => {
+  const cases = [
+    {
+      name: "useToast でトーストが表示される",
+      action: async () => {
+        await userEvent.click(
+          screen.getByRole("button", { name: "トースト表示" })
+        )
+      },
+      expected: { text: "テスト通知" }
+    },
+    {
+      name: "トーストに閉じるボタンがある",
+      action: async () => {
+        await userEvent.click(
+          screen.getByRole("button", { name: "トースト表示" })
+        )
+      },
+      expected: { closeButton: true }
+    },
+    {
+      name: "閉じるボタンでトーストが消える",
+      action: async () => {
+        await userEvent.click(
+          screen.getByRole("button", { name: "トースト表示" })
+        )
+        await userEvent.click(screen.getByLabelText("閉じる"))
+      },
+      expected: { textHidden: "テスト通知" }
+    }
+  ]
+
+  test.each(cases)("$name", async ({ action, expected }) => {
     render(
       <ToastProvider>
         <ToastTrigger />
       </ToastProvider>
     )
 
-    await userEvent.click(screen.getByRole("button", { name: "トースト表示" }))
-    expect(screen.getByText("テスト通知")).toBeInTheDocument()
-  })
+    await action()
 
-  test("トーストに閉じるボタンがある", async () => {
-    render(
-      <ToastProvider>
-        <ToastTrigger />
-      </ToastProvider>
-    )
-
-    await userEvent.click(screen.getByRole("button", { name: "トースト表示" }))
-    expect(screen.getByLabelText("閉じる")).toBeInTheDocument()
-  })
-
-  test("閉じるボタンでトーストが消える", async () => {
-    render(
-      <ToastProvider>
-        <ToastTrigger />
-      </ToastProvider>
-    )
-
-    await userEvent.click(screen.getByRole("button", { name: "トースト表示" }))
-    expect(screen.getByText("テスト通知")).toBeInTheDocument()
-
-    await userEvent.click(screen.getByLabelText("閉じる"))
-    expect(screen.queryByText("テスト通知")).not.toBeInTheDocument()
+    if (expected.text)
+      expect(screen.getByText(expected.text)).toBeInTheDocument()
+    if (expected.closeButton)
+      expect(screen.getByLabelText("閉じる")).toBeInTheDocument()
+    if (expected.textHidden)
+      expect(screen.queryByText(expected.textHidden)).not.toBeInTheDocument()
   })
 })

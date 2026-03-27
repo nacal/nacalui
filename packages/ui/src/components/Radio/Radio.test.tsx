@@ -4,10 +4,11 @@ import { describe, expect, test, vi } from "vitest"
 import { Radio, RadioGroup } from "./Radio"
 
 describe("RadioGroup", () => {
-  const renderCases = [
+  const cases = [
     {
       name: "ラベルが表示される",
       props: { label: "通知方法" },
+      action: async () => {},
       expected: { label: "通知方法" }
     },
     {
@@ -17,22 +18,36 @@ describe("RadioGroup", () => {
         isInvalid: true,
         errorMessage: "選択してください"
       },
+      action: async () => {},
       expected: { error: "選択してください" }
     },
     {
       name: "disabled で操作不可",
       props: { label: "通知", isDisabled: true },
+      action: async () => {},
       expected: { disabled: true }
+    },
+    {
+      name: "クリックで選択が変わる",
+      props: { label: "通知" },
+      action: async (onChange: ReturnType<typeof vi.fn>) => {
+        await userEvent.click(screen.getByRole("radio", { name: "SMS" }))
+        expect(onChange).toHaveBeenCalledWith("sms")
+      },
+      expected: { callsOnChange: true }
     }
   ]
 
-  test.each(renderCases)("$name", ({ props, expected }) => {
+  test.each(cases)("$name", async ({ props, action, expected }) => {
+    const onChange = vi.fn()
     render(
-      <RadioGroup {...props}>
-        <Radio value="a">A</Radio>
-        <Radio value="b">B</Radio>
+      <RadioGroup onChange={onChange} {...props}>
+        <Radio value="email">メール</Radio>
+        <Radio value="sms">SMS</Radio>
       </RadioGroup>
     )
+
+    await action(onChange)
 
     if (expected.label)
       expect(screen.getByText(expected.label)).toBeInTheDocument()
@@ -43,18 +58,5 @@ describe("RadioGroup", () => {
         expect(radio).toBeDisabled()
       }
     }
-  })
-
-  test("クリックで選択が変わる", async () => {
-    const onChange = vi.fn()
-    render(
-      <RadioGroup label="通知" onChange={onChange}>
-        <Radio value="email">メール</Radio>
-        <Radio value="sms">SMS</Radio>
-      </RadioGroup>
-    )
-
-    await userEvent.click(screen.getByRole("radio", { name: "SMS" }))
-    expect(onChange).toHaveBeenCalledWith("sms")
   })
 })

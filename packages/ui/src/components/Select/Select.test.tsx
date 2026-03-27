@@ -3,7 +3,7 @@ import { describe, expect, test } from "vitest"
 import { Select, SelectItem } from "./Select"
 
 describe("Select", () => {
-  const renderCases = [
+  const cases = [
     {
       name: "ラベルが表示される",
       props: { label: "フルーツ" },
@@ -25,10 +25,15 @@ describe("Select", () => {
         errorMessage: "選択してください"
       },
       expected: { error: "選択してください" }
+    },
+    {
+      name: "トリガーボタンが存在する",
+      props: { label: "フルーツ", placeholder: "選択" },
+      expected: { hasButton: true }
     }
   ]
 
-  test.each(renderCases)("$name", ({ props, expected }) => {
+  test.each(cases)("$name", ({ props, expected }) => {
     render(
       <Select {...props}>
         <SelectItem id="apple">りんご</SelectItem>
@@ -42,14 +47,7 @@ describe("Select", () => {
       expect(screen.getByText(expected.description)).toBeInTheDocument()
     if (expected.error)
       expect(screen.getByText(expected.error)).toBeInTheDocument()
-  })
-
-  test("トリガーボタンが存在する", () => {
-    render(
-      <Select label="フルーツ" placeholder="選択">
-        <SelectItem id="apple">りんご</SelectItem>
-      </Select>
-    )
-    expect(screen.getByRole("button")).toBeInTheDocument()
+    if (expected.hasButton)
+      expect(screen.getByRole("button")).toBeInTheDocument()
   })
 })
