@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { spacing } from "@nacalui/tokens";
+import { spacing } from "@nacalui/tokens"
+import type { Meta, StoryObj } from "@storybook/react"
 
 function SpacingShowcase() {
   return (
@@ -20,16 +20,16 @@ function SpacingShowcase() {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
 const meta: Meta = {
   title: "Tokens/Spacing",
-  component: SpacingShowcase,
-};
+  component: SpacingShowcase
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj;
+type Story = StoryObj
 
-export const Default: Story = {};
+export const Default: Story = {}

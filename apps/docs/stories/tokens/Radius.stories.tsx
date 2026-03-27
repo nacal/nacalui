@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { radius } from "@nacalui/tokens";
+import { radius } from "@nacalui/tokens"
+import type { Meta, StoryObj } from "@storybook/react"
 
 function RadiusShowcase() {
   return (
@@ -18,16 +18,16 @@ function RadiusShowcase() {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
 const meta: Meta = {
   title: "Tokens/Radius",
-  component: RadiusShowcase,
-};
+  component: RadiusShowcase
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj;
+type Story = StoryObj
 
-export const Default: Story = {};
+export const Default: Story = {}

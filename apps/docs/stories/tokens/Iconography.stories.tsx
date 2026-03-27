@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react"
 
 const reservedIcons = [
   { name: "x", label: "閉じる" },
@@ -10,8 +10,8 @@ const reservedIcons = [
   { name: "more-horizontal", label: "その他" },
   { name: "search", label: "検索" },
   { name: "plus", label: "追加" },
-  { name: "trash-2", label: "削除" },
-];
+  { name: "trash-2", label: "削除" }
+]
 
 const commonIcons = [
   "home",
@@ -37,28 +37,26 @@ const commonIcons = [
   "filter",
   "sort-asc",
   "mail",
-  "message-circle",
-];
+  "message-circle"
+]
 
 function IconItem({
   name,
   label,
-  size = "text-xl",
+  size = "text-xl"
 }: {
-  name: string;
-  label?: string;
-  size?: string;
+  name: string
+  label?: string
+  size?: string
 }) {
-  const iconClass = `i-lucide-${name} ${size}`;
+  const iconClass = `i-lucide-${name} ${size}`
   return (
     <div className="flex flex-col items-center gap-2 p-3">
       <div className={`${iconClass} text-stone-700`} />
       <div className="text-xs text-stone-500 font-mono">{name}</div>
-      {label && (
-        <div className="text-xs text-stone-400">{label}</div>
-      )}
+      {label && <div className="text-xs text-stone-400">{label}</div>}
     </div>
-  );
+  )
 }
 
 function IconographyShowcase() {
@@ -79,7 +77,7 @@ function IconographyShowcase() {
             { size: "text-sm", label: "sm (14px)" },
             { size: "text-base", label: "base (16px)" },
             { size: "text-xl", label: "xl (20px)" },
-            { size: "text-2xl", label: "2xl (24px)" },
+            { size: "text-2xl", label: "2xl (24px)" }
           ].map(({ size, label }) => (
             <div key={size} className="flex flex-col items-center gap-2">
               <div className={`i-lucide-heart ${size} text-stone-700`} />
@@ -99,7 +97,7 @@ function IconographyShowcase() {
             { color: "text-blue-600", label: "blue-600" },
             { color: "text-sage-600", label: "sage-600" },
             { color: "text-red-600", label: "red-600" },
-            { color: "text-amber-600", label: "amber-600" },
+            { color: "text-amber-600", label: "amber-600" }
           ].map(({ color, label }) => (
             <div key={color} className="flex flex-col items-center gap-2">
               <div className={`i-lucide-heart text-xl ${color}`} />
@@ -132,7 +130,7 @@ function IconographyShowcase() {
           Common Icons
         </h3>
         <div className="grid grid-cols-6 sm:grid-cols-8 gap-1">
-          {commonIcons.map((name) => (
+          {commonIcons.map(name => (
             <IconItem key={name} name={name} />
           ))}
         </div>
@@ -149,7 +147,10 @@ function IconographyShowcase() {
             <div className="text-xs text-stone-400 font-mono mb-2">
               Button with icon
             </div>
-            <button className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md text-sm">
+            <button
+              type="button"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md text-sm"
+            >
               <div className="i-lucide-plus text-base" aria-hidden="true" />
               追加する
             </button>
@@ -159,6 +160,7 @@ function IconographyShowcase() {
               Icon-only button
             </div>
             <button
+              type="button"
               className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-stone-200 text-stone-600 hover:bg-stone-50"
               aria-label="検索"
             >
@@ -170,26 +172,23 @@ function IconographyShowcase() {
               Status with icon
             </div>
             <div className="inline-flex items-center gap-2 text-sm text-emerald-600">
-              <div
-                className="i-lucide-check text-base"
-                aria-hidden="true"
-              />
+              <div className="i-lucide-check text-base" aria-hidden="true" />
               保存しました
             </div>
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 const meta: Meta = {
   title: "Tokens/Iconography",
-  component: IconographyShowcase,
-};
+  component: IconographyShowcase
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj;
+type Story = StoryObj
 
-export const Default: Story = {};
+export const Default: Story = {}

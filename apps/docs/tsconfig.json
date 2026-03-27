@@ -6,7 +6,5 @@
     "rootDir": "."
   },
   "include": ["stories", ".storybook"],
-  "references": [
-    { "path": "../../packages/tokens" }
-  ]
+  "references": [{ "path": "../../packages/tokens" }]
 }

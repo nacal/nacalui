@@ -8,10 +8,16 @@
     "build:ui": "pnpm --filter @nacalui/ui build",
     "build:docs": "pnpm --filter @nacalui/docs build-storybook",
     "build": "pnpm build:tokens && pnpm build:ui",
-    "typecheck": "tsc -b"
+    "typecheck": "tsc -b",
+    "lint": "biome check .",
+    "format": "biome check --write ."
   },
   "engines": {
     "node": ">=22",
     "pnpm": ">=10"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.9",
+    "@nacal-tools/biome-config": "^0.2.2"
   }
 }

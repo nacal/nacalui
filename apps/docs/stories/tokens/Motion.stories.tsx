@@ -1,14 +1,15 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { duration, easing } from "@nacalui/tokens";
-import { useState } from "react";
+import { duration, easing } from "@nacalui/tokens"
+import type { Meta, StoryObj } from "@storybook/react"
+import { useState } from "react"
 
 function MotionShowcase() {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(false)
 
   return (
     <div className="space-y-8 p-6 max-w-4xl">
       <div className="flex gap-3">
         <button
+          type="button"
           className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm"
           onClick={() => setActive(!active)}
         >
@@ -31,11 +32,13 @@ function MotionShowcase() {
                     transitionProperty: "left",
                     transitionDuration: value,
                     transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
-                    left: active ? "calc(100% - 2rem)" : "0",
+                    left: active ? "calc(100% - 2rem)" : "0"
                   }}
                 />
               </div>
-              <div className="text-xs text-stone-400 font-mono w-12">{value}</div>
+              <div className="text-xs text-stone-400 font-mono w-12">
+                {value}
+              </div>
             </div>
           ))}
         </div>
@@ -58,7 +61,7 @@ function MotionShowcase() {
                     transitionProperty: "left",
                     transitionDuration: "500ms",
                     transitionTimingFunction: value,
-                    left: active ? "calc(100% - 2rem)" : "0",
+                    left: active ? "calc(100% - 2rem)" : "0"
                   }}
                 />
               </div>
@@ -70,16 +73,16 @@ function MotionShowcase() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 const meta: Meta = {
   title: "Tokens/Motion",
-  component: MotionShowcase,
-};
+  component: MotionShowcase
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj;
+type Story = StoryObj
 
-export const Default: Story = {};
+export const Default: Story = {}

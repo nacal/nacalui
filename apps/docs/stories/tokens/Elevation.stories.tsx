@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { elevation } from "@nacalui/tokens";
+import { elevation } from "@nacalui/tokens"
+import type { Meta, StoryObj } from "@storybook/react"
 
 function ElevationShowcase() {
   return (
@@ -20,16 +20,16 @@ function ElevationShowcase() {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
 const meta: Meta = {
   title: "Tokens/Elevation",
-  component: ElevationShowcase,
-};
+  component: ElevationShowcase
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj;
+type Story = StoryObj
 
-export const Default: Story = {};
+export const Default: Story = {}

@@ -1,54 +1,50 @@
-import type { Preset } from "unocss";
-import { palette, semanticColors, intentColors } from "../src/colors";
+import type { Preset } from "unocss"
+import { intentColors, palette, semanticColors } from "../src/colors"
+import { elevation } from "../src/elevation"
+import { breakpoint } from "../src/layout"
+import { duration, easing } from "../src/motion"
+import { radius } from "../src/radius"
+import { spacing } from "../src/spacing"
 import {
   fontFamily,
   fontSize,
   fontWeight,
-  lineHeight,
   letterSpacing,
-} from "../src/typography";
-import { spacing } from "../src/spacing";
-import { elevation } from "../src/elevation";
-import { radius } from "../src/radius";
-import { duration, easing } from "../src/motion";
-import { breakpoint } from "../src/layout";
+  lineHeight
+} from "../src/typography"
 
-type NestedRecord = Record<string, Record<string, string>>;
+type NestedRecord = Record<string, Record<string, string>>
 
-function flattenSemanticColors(
-  colors: NestedRecord,
-): Record<string, string> {
-  const result: Record<string, string> = {};
+function flattenSemanticColors(colors: NestedRecord): Record<string, string> {
+  const result: Record<string, string> = {}
   for (const [group, values] of Object.entries(colors)) {
     for (const [key, value] of Object.entries(values)) {
-      result[`${group}-${key}`] = value;
+      result[`${group}-${key}`] = value
     }
   }
-  return result;
+  return result
 }
 
-function generateSemanticCSSVars(
-  colors: NestedRecord,
-): string {
+function generateSemanticCSSVars(colors: NestedRecord): string {
   return Object.entries(colors)
     .flatMap(([group, values]) =>
       Object.entries(values).map(
-        ([key, value]) => `--color-${group}-${key}: ${value};`,
-      ),
+        ([key, value]) => `--color-${group}-${key}: ${value};`
+      )
     )
-    .join("\n  ");
+    .join("\n  ")
 }
 
-type IntentRecord = Record<string, Record<string, string>>;
+type IntentRecord = Record<string, Record<string, string>>
 
 function generateIntentCSSVars(intents: IntentRecord): string {
   return Object.entries(intents)
     .flatMap(([intent, values]) =>
       Object.entries(values).map(
-        ([key, value]) => `--intent-${intent}-${key}: ${value};`,
-      ),
+        ([key, value]) => `--intent-${intent}-${key}: ${value};`
+      )
     )
-    .join("\n  ");
+    .join("\n  ")
 }
 
 export function presetNacalui(): Preset {
@@ -64,30 +60,30 @@ export function presetNacalui(): Preset {
             primary: "var(--color-bg-primary)",
             secondary: "var(--color-bg-secondary)",
             tertiary: "var(--color-bg-tertiary)",
-            inverse: "var(--color-bg-inverse)",
+            inverse: "var(--color-bg-inverse)"
           },
           fg: {
             primary: "var(--color-fg-primary)",
             secondary: "var(--color-fg-secondary)",
             tertiary: "var(--color-fg-tertiary)",
-            inverse: "var(--color-fg-inverse)",
+            inverse: "var(--color-fg-inverse)"
           },
           accent: {
             primary: "var(--color-accent-primary)",
             secondary: "var(--color-accent-secondary)",
             "primary-hover": "var(--color-accent-primary-hover)",
-            "secondary-hover": "var(--color-accent-secondary-hover)",
+            "secondary-hover": "var(--color-accent-secondary-hover)"
           },
           border: {
             default: "var(--color-border-default)",
-            strong: "var(--color-border-strong)",
+            strong: "var(--color-border-strong)"
           },
           status: {
             error: "var(--color-status-error)",
             warning: "var(--color-status-warning)",
-            success: "var(--color-status-success)",
-          },
-        },
+            success: "var(--color-status-success)"
+          }
+        }
       },
       fontFamily,
       fontSize,
@@ -97,7 +93,7 @@ export function presetNacalui(): Preset {
       spacing,
       boxShadow: elevation,
       borderRadius: radius,
-      breakpoints: breakpoint,
+      breakpoints: breakpoint
     },
     preflights: [
       {
@@ -123,8 +119,8 @@ export function presetNacalui(): Preset {
 :root[data-theme="dark"] {
   ${generateSemanticCSSVars(semanticColors.dark)}
   ${generateIntentCSSVars(intentColors.dark)}
-}`,
-      },
-    ],
-  };
+}`
+      }
+    ]
+  }
 }

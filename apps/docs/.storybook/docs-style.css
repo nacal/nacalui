@@ -1,25 +1,20 @@
 /* Storybook MDX docs — table styles */
-.sbdocs.sbdocs-wrapper table,
-.sbdocs.sbdocs-content table,
 .sbdocs table {
   width: 100%;
   border-collapse: collapse;
   margin: 1rem 0;
   font-size: 0.875rem;
-  display: table !important;
+  display: table;
 }
 
-.sbdocs.sbdocs-wrapper thead tr,
 .sbdocs thead tr {
   border-bottom: 2px solid #e7e5e4;
 }
 
-.sbdocs.sbdocs-wrapper tbody tr,
 .sbdocs tbody tr {
   border-bottom: 1px solid #f5f5f4;
 }
 
-.sbdocs.sbdocs-wrapper th,
 .sbdocs th {
   text-align: left;
   padding: 0.5rem 0.75rem;
@@ -27,13 +22,11 @@
   color: #57534e;
 }
 
-.sbdocs.sbdocs-wrapper td,
 .sbdocs td {
   padding: 0.5rem 0.75rem;
   color: #44403c;
 }
 
-.sbdocs.sbdocs-wrapper tbody tr:hover,
 .sbdocs tbody tr:hover {
   background-color: #fafaf9;
 }
@@ -61,13 +54,4 @@
   padding: 0;
   font-size: 0.8125rem;
   color: inherit;
-}
-
-/* Ensure markdown tables are visible */
-table {
-  border-collapse: collapse;
-}
-
-th, td {
-  border: none;
 }

@@ -1,7 +1,7 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import unocss from "unocss/vite";
-import { resolve } from "node:path";
+import { resolve } from "node:path"
+import react from "@vitejs/plugin-react"
+import unocss from "unocss/vite"
+import { defineConfig } from "vite"
 
 export default defineConfig({
   plugins: [unocss(), react()],
@@ -10,11 +10,19 @@ export default defineConfig({
       entry: resolve(__dirname, "src/index.ts"),
       name: "NacalUI",
       fileName: "nacalui",
-      formats: ["es"],
+      formats: ["es"]
     },
     rollupOptions: {
-      external: ["react", "react-dom", "react/jsx-runtime", /^react-aria/, /^@react-aria/, /^@react-stately/, /^@internationalized/],
+      external: [
+        "react",
+        "react-dom",
+        "react/jsx-runtime",
+        /^react-aria/,
+        /^@react-aria/,
+        /^@react-stately/,
+        /^@internationalized/
+      ]
     },
-    cssCodeSplit: false,
-  },
-});
+    cssCodeSplit: false
+  }
+})

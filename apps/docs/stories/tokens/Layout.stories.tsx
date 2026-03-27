@@ -1,12 +1,10 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { breakpoint, container, grid, spacing } from "@nacalui/tokens";
+import { breakpoint, container, grid } from "@nacalui/tokens"
+import type { Meta, StoryObj } from "@storybook/react"
 
 function BreakpointTable() {
   return (
     <div>
-      <h3 className="text-lg font-semibold text-stone-800 mb-3">
-        Breakpoints
-      </h3>
+      <h3 className="text-lg font-semibold text-stone-800 mb-3">Breakpoints</h3>
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-stone-200">
@@ -35,7 +33,7 @@ function BreakpointTable() {
         </tbody>
       </table>
     </div>
-  );
+  )
 }
 
 function ContainerTable() {
@@ -63,7 +61,7 @@ function ContainerTable() {
         </tbody>
       </table>
     </div>
-  );
+  )
 }
 
 function GridSpec() {
@@ -94,11 +92,12 @@ function GridSpec() {
         className="grid gap-0 mb-2"
         style={{
           gridTemplateColumns: `repeat(${grid.columns}, 1fr)`,
-          gap: grid.gutter,
+          gap: grid.gutter
         }}
       >
         {Array.from({ length: grid.columns }).map((_, i) => (
           <div
+            // biome-ignore lint/suspicious/noArrayIndexKey: static grid columns
             key={i}
             className="h-10 bg-blue-100 rounded flex items-center justify-center text-xs font-mono text-blue-600"
           >
@@ -115,21 +114,20 @@ function GridSpec() {
           { label: "6 + 6", cols: [6, 6] },
           { label: "4 + 8", cols: [4, 8] },
           { label: "3 + 6 + 3", cols: [3, 6, 3] },
-          { label: "3 + 3 + 3 + 3", cols: [3, 3, 3, 3] },
+          { label: "3 + 3 + 3 + 3", cols: [3, 3, 3, 3] }
         ].map(({ label, cols }) => (
           <div key={label}>
-            <div className="text-xs text-stone-400 font-mono mb-1">
-              {label}
-            </div>
+            <div className="text-xs text-stone-400 font-mono mb-1">{label}</div>
             <div
               className="grid"
               style={{
                 gridTemplateColumns: `repeat(${grid.columns}, 1fr)`,
-                gap: grid.gutter,
+                gap: grid.gutter
               }}
             >
               {cols.map((span, i) => (
                 <div
+                  // biome-ignore lint/suspicious/noArrayIndexKey: static layout demo
                   key={i}
                   className="h-8 bg-sage-100 rounded flex items-center justify-center text-xs font-mono text-sage-600"
                   style={{ gridColumn: `span ${span}` }}
@@ -142,7 +140,7 @@ function GridSpec() {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
 function BreakpointVisualizer() {
@@ -175,7 +173,7 @@ function BreakpointVisualizer() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 function LayoutShowcase() {
@@ -190,19 +188,19 @@ function LayoutShowcase() {
       <hr className="border-stone-200" />
       <BreakpointVisualizer />
     </div>
-  );
+  )
 }
 
 const meta: Meta = {
   title: "Tokens/Layout",
   component: LayoutShowcase,
   parameters: {
-    layout: "fullscreen",
-  },
-};
+    layout: "fullscreen"
+  }
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj;
+type Story = StoryObj
 
-export const Default: Story = {};
+export const Default: Story = {}

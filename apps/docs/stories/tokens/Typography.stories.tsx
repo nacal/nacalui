@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from "@storybook/react";
 import {
   fontFamily,
   fontSize,
   fontWeight,
-  lineHeight,
   letterSpacing,
-} from "@nacalui/tokens";
+  lineHeight
+} from "@nacalui/tokens"
+import type { Meta, StoryObj } from "@storybook/react"
 
 function TypographyShowcase() {
   return (
@@ -18,10 +18,16 @@ function TypographyShowcase() {
               <div className="text-xs text-stone-500 font-mono mb-1">
                 {name}
               </div>
-              <div className="text-lg text-stone-800" style={{ fontFamily: value }}>
+              <div
+                className="text-lg text-stone-800"
+                style={{ fontFamily: value }}
+              >
                 The quick brown fox jumps over the lazy dog
               </div>
-              <div className="text-lg text-stone-800" style={{ fontFamily: value }}>
+              <div
+                className="text-lg text-stone-800"
+                style={{ fontFamily: value }}
+              >
                 素早い茶色の狐が怠惰な犬を飛び越える
               </div>
             </div>
@@ -71,9 +77,7 @@ function TypographyShowcase() {
       <hr className="border-stone-200" />
 
       <div>
-        <h2 className="text-2xl font-bold text-stone-900 mb-4">
-          Line Height
-        </h2>
+        <h2 className="text-2xl font-bold text-stone-900 mb-4">Line Height</h2>
         <div className="space-y-4">
           {Object.entries(lineHeight).map(([name, value]) => (
             <div key={name}>
@@ -114,16 +118,16 @@ function TypographyShowcase() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 const meta: Meta = {
   title: "Tokens/Typography",
-  component: TypographyShowcase,
-};
+  component: TypographyShowcase
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj;
+type Story = StoryObj
 
-export const Default: Story = {};
+export const Default: Story = {}

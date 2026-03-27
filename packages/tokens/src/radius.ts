@@ -6,5 +6,5 @@ export const radius = {
   lg: "0.75rem",
   xl: "1rem",
   "2xl": "1.25rem",
-  full: "9999px",
-} as const;
+  full: "9999px"
+} as const
