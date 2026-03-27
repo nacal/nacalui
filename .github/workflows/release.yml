@@ -16,18 +16,31 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      - name: Check for changesets
+        id: check
+        run: |
+          if ls .changeset/*.md 1>/dev/null 2>&1 && [ "$(ls .changeset/*.md 2>/dev/null | grep -v README.md)" ]; then
+            echo "has_changesets=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changesets=false" >> "$GITHUB_OUTPUT"
+            echo "No changesets found, skipping release."
+          fi
+
       - uses: pnpm/action-setup@v5
+        if: steps.check.outputs.has_changesets == 'true'
 
       - uses: actions/setup-node@v6
+        if: steps.check.outputs.has_changesets == 'true'
         with:
           node-version: 22
           cache: pnpm
           registry-url: "https://registry.npmjs.org"
 
       - run: pnpm install --frozen-lockfile
+        if: steps.check.outputs.has_changesets == 'true'
 
       - name: Create Release PR or Publish
-        id: changesets
+        if: steps.check.outputs.has_changesets == 'true'
         uses: changesets/action@v1
         with:
           publish: pnpm release
