@@ -37,11 +37,7 @@ const preview: Preview = {
     (Story, context) => {
       const theme = context.globals.theme || "light"
       const root = document.documentElement
-      if (theme === "dark") {
-        root.setAttribute("data-theme", "dark")
-      } else {
-        root.removeAttribute("data-theme")
-      }
+      root.setAttribute("data-theme", theme)
       document.body.style.backgroundColor =
         theme === "dark" ? "#1c1917" : "#fafaf9"
       return Story()
