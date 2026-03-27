@@ -2,6 +2,11 @@ import "@unocss/reset/tailwind.css"
 import "virtual:uno.css"
 import "./docs-style.css"
 import "../../../packages/ui/src/components/Button/button.css"
+import "../../../packages/ui/src/components/Input/input.css"
+import "../../../packages/ui/src/components/Checkbox/checkbox.css"
+import "../../../packages/ui/src/components/Select/select.css"
+import "../../../packages/ui/src/components/Dialog/dialog.css"
+import "../../../packages/ui/src/components/Toast/toast.css"
 import type { Preview } from "@storybook/react"
 
 const preview: Preview = {
