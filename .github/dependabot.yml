@@ -1,0 +1,32 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      storybook:
+        patterns:
+          - "@storybook/*"
+          - "storybook"
+      react-aria:
+        patterns:
+          - "react-aria-components"
+          - "@react-aria/*"
+          - "@react-stately/*"
+          - "@internationalized/*"
+      testing:
+        patterns:
+          - "vitest"
+          - "@testing-library/*"
+      unocss:
+        patterns:
+          - "unocss"
+          - "@unocss/*"
+          - "@iconify-json/*"
+    open-pull-requests-limit: 10
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
