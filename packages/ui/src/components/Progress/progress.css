@@ -1,0 +1,15 @@
+.nacalui-progress-indeterminate {
+  animation: nacalui-progress-slide 1.5s ease-in-out infinite;
+}
+
+@keyframes nacalui-progress-slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(150%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
