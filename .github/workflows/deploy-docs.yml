@@ -31,25 +31,25 @@ jobs:
 
       - name: Deploy to production
         if: github.event_name == 'push'
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          packageManager: pnpm
-          command: pages deploy apps/docs/storybook-static --project-name nacalui-docs --branch main
+        run: pnpm wrangler pages deploy apps/docs/storybook-static --project-name nacalui-docs --branch main
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
       - name: Deploy preview
         if: github.event_name == 'pull_request'
         id: preview
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          packageManager: pnpm
-          command: pages deploy apps/docs/storybook-static --project-name nacalui-docs --branch ${{ github.head_ref }}
+        run: |
+          OUTPUT=$(pnpm wrangler pages deploy apps/docs/storybook-static --project-name nacalui-docs --branch ${{ github.head_ref }} 2>&1)
+          echo "$OUTPUT"
+          URL=$(echo "$OUTPUT" | grep -oP 'https://[^\s]+\.nacalui-docs\.pages\.dev')
+          echo "deployment-url=$URL" >> "$GITHUB_OUTPUT"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
       - name: Comment preview URL
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && steps.preview.outputs.deployment-url
         uses: actions/github-script@v8
         with:
           script: |
