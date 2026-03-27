@@ -1,3 +1,7 @@
+export type { AlertIntent, AlertProps } from "./components/Alert"
+export { Alert } from "./components/Alert"
+export type { AvatarProps, AvatarSize } from "./components/Avatar"
+export { Avatar } from "./components/Avatar"
 export type {
   BadgeIntent,
   BadgeProps,
@@ -24,6 +28,8 @@ export type { CheckboxProps } from "./components/Checkbox"
 export { Checkbox } from "./components/Checkbox"
 export type { DialogProps } from "./components/Dialog"
 export { Dialog } from "./components/Dialog"
+export type { DividerProps } from "./components/Divider"
+export { Divider } from "./components/Divider"
 export type { InputProps, InputSize } from "./components/Input"
 export { Input } from "./components/Input"
 export type { LinkProps, LinkVariant } from "./components/Link"
@@ -32,6 +38,8 @@ export type { RadioGroupProps, RadioProps } from "./components/Radio"
 export { Radio, RadioGroup } from "./components/Radio"
 export type { SelectItemProps, SelectProps } from "./components/Select"
 export { Select, SelectItem } from "./components/Select"
+export type { SkeletonProps, SkeletonVariant } from "./components/Skeleton"
+export { Skeleton } from "./components/Skeleton"
 export type { SwitchProps } from "./components/Switch"
 export { Switch } from "./components/Switch"
 export type {
