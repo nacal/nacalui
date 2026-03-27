@@ -81,3 +81,5 @@ export type {
 export { ToastProvider, useToast } from "./components/Toast"
 export type { TooltipProps } from "./components/Tooltip"
 export { Tooltip } from "./components/Tooltip"
+export type { NacalUIProviderProps, Theme } from "./provider"
+export { NacalUIProvider, useTheme } from "./provider"
