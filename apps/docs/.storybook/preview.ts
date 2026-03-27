@@ -1,5 +1,6 @@
 import "@unocss/reset/tailwind.css"
 import "virtual:uno.css"
+import "../../../packages/tokens/dist/tokens.css"
 import "./docs-style.css"
 import "../../../packages/ui/src/components/Button/button.css"
 import "../../../packages/ui/src/components/Input/input.css"

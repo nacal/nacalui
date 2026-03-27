@@ -10,16 +10,18 @@
     "./uno-preset": {
       "types": "./dist/uno-preset/index.d.ts",
       "import": "./dist/uno-preset/index.js"
-    }
+    },
+    "./css": "./dist/tokens.css"
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.build.json && node dist/src/generate-css.js",
     "dev": "tsc -p tsconfig.build.json --watch"
   },
   "devDependencies": {
+    "@types/node": "^25.5.0",
     "typescript": "~5.8.0",
     "unocss": "^66.0.0"
   }
