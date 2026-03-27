@@ -1,6 +1,16 @@
 {
   "name": "@nacalui/tokens",
   "version": "0.0.1",
+  "description": "Design tokens for nacalui",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nacal/nacalui",
+    "directory": "packages/tokens"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "exports": {
     ".": {

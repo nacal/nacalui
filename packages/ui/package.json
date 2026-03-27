@@ -1,6 +1,16 @@
 {
   "name": "@nacalui/ui",
   "version": "0.0.1",
+  "description": "UI component library for nacalui design system",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nacal/nacalui",
+    "directory": "packages/ui"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "exports": {
     ".": {
@@ -11,7 +21,9 @@
     "./styles": "./src/styles.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "src/styles.css",
+    "src/components"
   ],
   "scripts": {
     "build": "vite build && tsc -p tsconfig.build.json --emitDeclarationOnly",
