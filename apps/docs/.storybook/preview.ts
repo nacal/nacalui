@@ -9,6 +9,8 @@ import "../../../packages/ui/src/components/Dialog/dialog.css"
 import "../../../packages/ui/src/components/Toast/toast.css"
 import "../../../packages/ui/src/components/Tooltip/tooltip.css"
 import "../../../packages/ui/src/components/Skeleton/skeleton.css"
+import "../../../packages/ui/src/components/DropdownMenu/dropdown-menu.css"
+import "../../../packages/ui/src/components/Progress/progress.css"
 import type { Preview } from "@storybook/react"
 
 const preview: Preview = {
