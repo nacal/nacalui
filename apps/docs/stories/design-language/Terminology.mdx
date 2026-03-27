@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/blocks";
+import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta title="Design Language/Terminology" />
 
@@ -10,48 +10,27 @@ nacalui で使う用語の定義です。プロジェクト全体で一貫した
 
 ## デザインシステム用語
 
-<table>
-  <thead>
-    <tr><th>用語</th><th>定義</th></tr>
-  </thead>
-  <tbody>
-    <tr><td><strong>Token（トークン）</strong></td><td>デザインの最小単位となる値。色、サイズ、余白など</td></tr>
-    <tr><td><strong>Palette（パレット）</strong></td><td>生のカラー値のコレクション（stone-500, blue-600 など）</td></tr>
-    <tr><td><strong>Semantic Color（セマンティックカラー）</strong></td><td>用途に紐づいた色の別名（fg-primary, bg-secondary など）</td></tr>
-    <tr><td><strong>Elevation（エレベーション）</strong></td><td>要素の浮き上がり度合い。シャドウで表現する</td></tr>
-    <tr><td><strong>Spacing（スペーシング）</strong></td><td>要素間の余白。4px基準のスケールで定義</td></tr>
-    <tr><td><strong>Component（コンポーネント）</strong></td><td>再利用可能なUIの構成要素</td></tr>
-    <tr><td><strong>Variant（バリアント）</strong></td><td>コンポーネントの見た目や振る舞いのバリエーション</td></tr>
-    <tr><td><strong>Preset（プリセット）</strong></td><td>UnoCSS にトークンを適用する設定パッケージ</td></tr>
-  </tbody>
-</table>
+- **Token（トークン）** — デザインの最小単位となる値。色、サイズ、余白など
+- **Palette（パレット）** — 生のカラー値のコレクション（stone-500, blue-600 など）
+- **Semantic Color（セマンティックカラー）** — 用途に紐づいた色の別名（fg-primary, bg-secondary など）
+- **Elevation（エレベーション）** — 要素の浮き上がり度合い。シャドウで表現する
+- **Spacing（スペーシング）** — 要素間の余白。4px基準のスケールで定義
+- **Component（コンポーネント）** — 再利用可能なUIの構成要素
+- **Variant（バリアント）** — コンポーネントの見た目や振る舞いのバリエーション
+- **Preset（プリセット）** — UnoCSS にトークンを適用する設定パッケージ
 
 ## コンポーネント設計用語
 
-<table>
-  <thead>
-    <tr><th>用語</th><th>定義</th></tr>
-  </thead>
-  <tbody>
-    <tr><td><strong>Primary</strong></td><td>最も重要なアクション・要素に使う</td></tr>
-    <tr><td><strong>Secondary</strong></td><td>補助的なアクション・要素に使う</td></tr>
-    <tr><td><strong>Destructive</strong></td><td>破壊的な操作（削除など）を示す</td></tr>
-    <tr><td><strong>Ghost</strong></td><td>背景を持たない、最小限のスタイル</td></tr>
-    <tr><td><strong>Disabled</strong></td><td>操作不可の状態</td></tr>
-  </tbody>
-</table>
+- **Primary** — 最も重要なアクション・要素に使う
+- **Secondary** — 補助的なアクション・要素に使う
+- **Destructive** — 破壊的な操作（削除など）を示す
+- **Ghost** — 背景を持たない、最小限のスタイル
+- **Disabled** — 操作不可の状態
 
 ## サイズ命名
 
 コンポーネントのサイズは以下の命名で統一します:
 
-<table>
-  <thead>
-    <tr><th>名前</th><th>用途</th></tr>
-  </thead>
-  <tbody>
-    <tr><td><strong>sm</strong></td><td>省スペース、補助的な場面</td></tr>
-    <tr><td><strong>md</strong></td><td>デフォルトサイズ</td></tr>
-    <tr><td><strong>lg</strong></td><td>強調、タッチデバイス向け</td></tr>
-  </tbody>
-</table>
+- **sm** — 省スペース、補助的な場面
+- **md** — デフォルトサイズ
+- **lg** — 強調、タッチデバイス向け
