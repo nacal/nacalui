@@ -1,13 +1,13 @@
 # nacalui
 
-個人プロジェクト向けのデザインシステム・UIコンポーネントライブラリ。
+A personal design system and UI component library.
 
-- 落ち着いたモノトーンベースのカラーパレット
-- [react-aria-components](https://react-spectrum.adobe.com/react-aria/) ベースのアクセシビリティ
-- [UnoCSS](https://unocss.dev/) + デザイントークンによるスタイリング
-- Light / Dark テーマ対応
+- Calm, monotone-based color palette
+- Accessible components built on [react-aria-components](https://react-spectrum.adobe.com/react-aria/)
+- [UnoCSS](https://unocss.dev/) + design tokens for styling
+- Light / Dark theme support
 
-## セットアップ
+## Setup
 
 ```bash
 pnpm add @nacalui/ui
@@ -26,7 +26,7 @@ function App() {
 }
 ```
 
-## 使い方
+## Usage
 
 ```tsx
 import { Button, Input, Card, CardBody } from "@nacalui/ui"
@@ -35,27 +35,27 @@ function Example() {
   return (
     <Card>
       <CardBody className="space-y-4">
-        <Input label="名前" placeholder="山田太郎" />
-        <Button intent="primary">保存する</Button>
+        <Input label="Name" placeholder="John Doe" />
+        <Button intent="primary">Save</Button>
       </CardBody>
     </Card>
   )
 }
 ```
 
-## テーマ
+## Theming
 
-`NacalUIProvider` は `light` / `dark` / `system` のテーマをサポートします。
+`NacalUIProvider` supports `light`, `dark`, and `system` themes.
 
 ```tsx
 import { NacalUIProvider, useTheme, Button } from "@nacalui/ui"
 
-// system（OS設定に追従）がデフォルト
+// "system" (follows OS preference) is the default
 <NacalUIProvider defaultTheme="system">
   <App />
 </NacalUIProvider>
 
-// アプリ内からテーマを変更
+// Change theme from within the app
 function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme()
   return (
@@ -63,25 +63,25 @@ function ThemeToggle() {
       variant="ghost"
       onPress={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
     >
-      {resolvedTheme === "dark" ? "☀️" : "🌙"}
+      {resolvedTheme === "dark" ? "Light" : "Dark"}
     </Button>
   )
 }
 ```
 
-## コンポーネント
+## Components
 
-| カテゴリ | コンポーネント |
+| Category | Components |
 |---|---|
-| **アクション** | Button, Link, DropdownMenu |
-| **入力** | Input, Textarea, Select, Checkbox, Radio, Switch |
-| **表示** | Badge, Card, Alert, Avatar, Divider, Skeleton, Spinner, Progress |
-| **ナビゲーション** | Tabs, Breadcrumbs, Pagination, Accordion |
-| **オーバーレイ** | Dialog, Toast, Tooltip |
+| **Actions** | Button, Link, DropdownMenu |
+| **Inputs** | Input, Textarea, Select, Checkbox, Radio, Switch |
+| **Display** | Badge, Card, Alert, Avatar, Divider, Skeleton, Spinner, Progress |
+| **Navigation** | Tabs, Breadcrumbs, Pagination, Accordion |
+| **Overlays** | Dialog, Toast, Tooltip |
 
-## UnoCSS プリセット
+## UnoCSS Preset
 
-UnoCSS を使うプロジェクトではデザイントークンをユーティリティクラスとして使えます。
+Projects using UnoCSS can use design tokens as utility classes.
 
 ```bash
 pnpm add -D @nacalui/tokens unocss
@@ -97,26 +97,26 @@ export default defineConfig({
 })
 ```
 
-## 開発
+## Development
 
 ```bash
 pnpm install
-pnpm dev:docs     # Storybook を起動
-pnpm build        # tokens + ui をビルド
-pnpm test         # テストを実行
-pnpm lint         # Biome で lint
+pnpm dev:docs     # Start Storybook
+pnpm build        # Build tokens + ui
+pnpm test         # Run tests
+pnpm lint         # Lint with Biome
 ```
 
-## パッケージ構成
+## Structure
 
 ```
 packages/
-  tokens/   # デザイントークン + UnoCSS プリセット
-  ui/       # React コンポーネント
+  tokens/   # Design tokens + UnoCSS preset
+  ui/       # React components
 apps/
-  docs/     # Storybook ドキュメント
+  docs/     # Storybook documentation
 ```
 
-## ライセンス
+## License
 
 MIT
