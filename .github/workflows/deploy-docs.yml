@@ -35,6 +35,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          packageManager: pnpm
           command: pages deploy apps/docs/storybook-static --project-name nacalui-docs --branch main
 
       - name: Deploy preview
@@ -44,6 +45,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          packageManager: pnpm
           command: pages deploy apps/docs/storybook-static --project-name nacalui-docs --branch ${{ github.head_ref }}
 
       - name: Comment preview URL
