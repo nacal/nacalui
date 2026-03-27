@@ -7,6 +7,7 @@ import "../../../packages/ui/src/components/Checkbox/checkbox.css"
 import "../../../packages/ui/src/components/Select/select.css"
 import "../../../packages/ui/src/components/Dialog/dialog.css"
 import "../../../packages/ui/src/components/Toast/toast.css"
+import "../../../packages/ui/src/components/Tooltip/tooltip.css"
 import type { Preview } from "@storybook/react"
 
 const preview: Preview = {

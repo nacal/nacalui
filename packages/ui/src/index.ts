@@ -26,6 +26,10 @@ export type { DialogProps } from "./components/Dialog"
 export { Dialog } from "./components/Dialog"
 export type { InputProps, InputSize } from "./components/Input"
 export { Input } from "./components/Input"
+export type { LinkProps, LinkVariant } from "./components/Link"
+export { Link } from "./components/Link"
+export type { RadioGroupProps, RadioProps } from "./components/Radio"
+export { Radio, RadioGroup } from "./components/Radio"
 export type { SelectItemProps, SelectProps } from "./components/Select"
 export { Select, SelectItem } from "./components/Select"
 export type { SwitchProps } from "./components/Switch"
@@ -37,9 +41,13 @@ export type {
   TabsProps
 } from "./components/Tabs"
 export { Tab, TabList, TabPanel, Tabs } from "./components/Tabs"
+export type { TextareaProps, TextareaSize } from "./components/Textarea"
+export { Textarea } from "./components/Textarea"
 export type {
   ToastData,
   ToastIntent,
   ToastProviderProps
 } from "./components/Toast"
 export { ToastProvider, useToast } from "./components/Toast"
+export type { TooltipProps } from "./components/Tooltip"
+export { Tooltip } from "./components/Tooltip"
