@@ -41,7 +41,7 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.99",
+    "@iconify-json/lucide": "^1.2.101",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
