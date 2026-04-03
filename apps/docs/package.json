@@ -14,7 +14,7 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.99",
+    "@iconify-json/lucide": "^1.2.101",
     "@storybook/addon-a11y": "^10.3.3",
     "@storybook/addon-docs": "^10.3.3",
     "@storybook/addon-mcp": "^0.4.2",
