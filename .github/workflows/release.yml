@@ -26,7 +26,7 @@ jobs:
             echo "No changesets found, skipping release."
           fi
 
-      - uses: pnpm/action-setup@v5
+      - uses: pnpm/action-setup@v6
         if: steps.check.outputs.has_changesets == 'true'
 
       - uses: actions/setup-node@v6
