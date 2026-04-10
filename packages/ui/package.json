@@ -41,7 +41,7 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.99",
+    "@iconify-json/lucide": "^1.2.102",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
@@ -52,7 +52,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "typescript": "~5.8.0",
-    "unocss": "^66.0.0",
+    "unocss": "^66.6.8",
     "vite": "^6.0.0",
     "vitest": "^4.1.2"
   }
